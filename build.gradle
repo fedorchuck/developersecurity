@@ -1,0 +1,106 @@
+/*
+ * Copyright 2016 Volodymyr Fedorchuk <vl.fedorchuck@gmail.com>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+plugins {
+    id 'war'
+}
+
+dependencies {
+    compile 'org.springframework:spring-webmvc:4.2.0.RELEASE'
+    compile 'org.springframework:spring-tx:4.2.0.RELEASE'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.5.3'
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+
+    compile "org.springframework:spring-jdbc:4.0.7.RELEASE"
+    compile "org.postgresql:postgresql:9.4-1200-jdbc41"
+
+    compile 'org.springframework.security:spring-security-core:4.1.0.RELEASE'
+    compile 'org.springframework.security:spring-security-web:4.1.0.RELEASE'
+    compile 'org.springframework.security:spring-security-config:4.1.0.RELEASE'
+    compile 'org.springframework.security:spring-security-taglibs:4.1.0.RELEASE'
+
+    compile 'javax.mail:mail:1.4.7'
+    compile 'org.springframework:spring-context-support:4.3.0.RELEASE'
+
+    compile 'jstl:jstl:1.2'
+
+    compile 'com.google.code.gson:gson:2.6.2'
+
+    compile 'log4j:log4j:1.2.17'
+
+    providedCompile "com.github.jsimone:webapp-runner:8.0.30.2"
+
+    testCompile "junit:junit-dep:4.11"
+}
+
+repositories {
+    mavenCentral()
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.13'
+}
+
+war.baseName = rootProject.name
+
+task setBuildDate {
+    def date = new Date()
+    println date
+    def file = projectDir.toString()+"/src/main/resources/date.properties"
+
+    if (!new File(file).exists())
+        new File(file).createNewFile()
+
+    def date_properties = new File(file)
+    def fileText = date_properties.text
+    fileText = "BUILD_DATE=" + date.toString()
+    date_properties.write(fileText)
+}
+
+task copyTomcat(type: Copy) {
+    into "$buildDir/tomcat/"
+    rename('(.+)-.+\\.jar','$1\\.jar')
+    from configurations.providedCompile.filter {
+        it.getName().contains('webapp-runner')
+    }
+}
+
+tasks['build'].dependsOn(copyTomcat)
+
+task runTomcat(type: JavaExec) {
+
+    dependsOn setBuildDate
+    dependsOn war
+    dependsOn copyTomcat
+
+    main = "webapp.runner.launch.Main"
+    classpath = files("$buildDir/tomcat/webapp-runner.jar")
+    args=["$buildDir/libs/"+war.baseName+".war"]
+    workingDir = projectDir
+}
+
+task stage {
+    dependsOn setBuildDate
+    dependsOn build
+    dependsOn copyTomcat
+}
+
+task cleanTreash () {
+    dependsOn clean
+    delete 'out', 'build', 'target', 'classes'
+}
+
+tasks['test'].enabled=false;
