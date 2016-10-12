@@ -21,16 +21,16 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page session="true"%>
 <html>
-<head><jsp:include page="fragment_head.jsp"/></head>
+<head><jsp:include page="fragments/fragment_head.jsp"/></head>
 <head>
     <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <body>
-<jsp:include page="yandex_metrica.jsp"/>
+<jsp:include page="fragments/yandex_metrica.jsp"/>
 
 <div id="content" class="content">
-    <jsp:include page="fragment_header_light.jsp"/>
+    <jsp:include page="fragments/fragment_header_light.jsp"/>
 
     <div class="container">
         <div class="row" style="margin-top: 25px;">
@@ -89,6 +89,6 @@
     </div>
 
 </div>
-<jsp:include page="fragment_footer.jsp"/>
+<jsp:include page="fragments/fragment_footer.jsp"/>
 </body>
 </html>

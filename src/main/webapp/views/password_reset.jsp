@@ -22,11 +22,11 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page session="true"%>
 <html>
-<head><jsp:include page="fragment_head.jsp"/></head>
+<head><jsp:include page="fragments/fragment_head.jsp"/></head>
 <body onload='document.loginForm.username.focus();'>
-<jsp:include page="yandex_metrica.jsp"/>
+<jsp:include page="fragments/yandex_metrica.jsp"/>
 <div id="content" class="content">
-    <jsp:include page="fragment_header_full.jsp"/>
+    <jsp:include page="fragments/fragment_header_full.jsp"/>
     <div class="container">
         <%
             Session z = (Session) request.getSession().getAttribute("session");
@@ -66,6 +66,6 @@
     </div>
 </div>
 
-<jsp:include page="fragment_footer.jsp"/>
+<jsp:include page="fragments/fragment_footer.jsp"/>
 </body>
 </html>

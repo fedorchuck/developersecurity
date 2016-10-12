@@ -22,7 +22,7 @@
 <html>
 
 <body>
-<jsp:include page="yandex_metrica.jsp"/>
+<jsp:include page="fragments/yandex_metrica.jsp"/>
 
 ERROR page
 </body>

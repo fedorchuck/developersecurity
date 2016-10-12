@@ -21,17 +21,17 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page session="true"%>
 <html>
-<head><jsp:include page="fragment_head.jsp"/></head>
+<head><jsp:include page="fragments/fragment_head.jsp"/></head>
 <style>
     .affix {
         top: 1%;
     }
 </style>
 <body>
-<jsp:include page="yandex_metrica.jsp"/>
+<jsp:include page="fragments/yandex_metrica.jsp"/>
 <div id="content" class="content">
     <%--<div class="container-fluid">--%>
-        <jsp:include page="fragment_header_full.jsp"/>
+        <jsp:include page="fragments/fragment_header_full.jsp"/>
     <%--</div>--%>
     <div class="container">
         <div class="row">
@@ -209,6 +209,6 @@ if (reply.getResponse().equals("DENIED"))
     </div>
 
 </div>
-<jsp:include page="fragment_footer.jsp"/>
+<jsp:include page="fragments/fragment_footer.jsp"/>
 </body>
 </html>

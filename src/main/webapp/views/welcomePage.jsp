@@ -27,6 +27,6 @@
     </script>
 </head>
 <body onload="init()">
-
+<jsp:include page="fragments/yandex_metrica.jsp"/>
 </body>
 </html>

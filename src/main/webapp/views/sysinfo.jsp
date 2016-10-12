@@ -25,7 +25,7 @@
     <meta http-equiv="refresh" content="5"/>
 </head>
 <body>
-
+<jsp:include page="fragments/yandex_metrica.jsp"/>
 
 <div id="content">
     <h1>SystemInfo</h1>
