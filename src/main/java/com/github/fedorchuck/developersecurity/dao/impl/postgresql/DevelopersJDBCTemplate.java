@@ -75,23 +75,21 @@ public class DevelopersJDBCTemplate {
      * @return true if token exist.
      * */
     public boolean tokenExist(String token){
-        String SQL = "SELECT enabled FROM developers WHERE developertoken=?";
+        String SQL = "SELECT developertoken FROM developers WHERE developertoken=?";
         try {
-            jdbcTemplateObject.queryForObject(SQL,Boolean.class,token);
-            return true;
+            return 0 < jdbcTemplateObject.queryForObject(SQL,String.class,token).length();
         } catch (EmptyResultDataAccessException ex){
             return false;
         }
     }
 
     /**
-     * @return true if token exist.
+     * @return true if email exist.
      * */
     public boolean emailExist(String email){
-        String SQL = "SELECT enabled FROM developers WHERE email=?";
+        String SQL = "SELECT email FROM developers WHERE email=?";
         try {
-            jdbcTemplateObject.queryForObject(SQL,Boolean.class,email);
-            return true;
+            return 0 < jdbcTemplateObject.queryForObject(SQL,String.class,email).length();
         } catch (EmptyResultDataAccessException ex){
             return false;
         }

@@ -46,10 +46,10 @@ public class ApplicationsJDBCTemplate {
         try {
             String SQL =
                     "INSERT INTO applications (" +
-                    "developerId, developerToken, " +
-                    "applicationToken, shortName, " +
-                    "response, message, documentationUrl, " +
-                    "dateofrecordcreated, dateoflastusedbyapi) values (?,?,?,?,?,?,?,?,?);";
+                            "developerId, developerToken, " +
+                            "applicationToken, shortName, " +
+                            "response, message, documentationUrl, " +
+                            "dateofrecordcreated, dateoflastusedbyapi) values (?,?,?,?,?,?,?,?,?);";
             jdbcTemplateObject.queryForList(
                     SQL,
                     application.getDeveloperId(),
@@ -72,10 +72,9 @@ public class ApplicationsJDBCTemplate {
      * @return true if token exist.
      * */
     public boolean tokenExist(String token){
-        String SQL = "SELECT dateofrecordcreated FROM applications WHERE applicationtoken=?";
+        String SQL = "SELECT developertoken FROM applications WHERE applicationtoken=?";
         try {
-            jdbcTemplateObject.queryForObject(SQL,Long.class,token);
-            return true;
+            return 0 < jdbcTemplateObject.queryForObject(SQL,String.class,token).length();
         } catch (EmptyResultDataAccessException ex){
             return false;
         }
@@ -102,8 +101,8 @@ public class ApplicationsJDBCTemplate {
         try {
             String SQL =
                     "UPDATE applications " +
-                    "SET shortName=?,response=?,message=?,dateofrecordcreated=? " +
-                    "WHERE applicationToken=?;";
+                            "SET shortName=?,response=?,message=?,dateofrecordcreated=? " +
+                            "WHERE applicationToken=?;";
             jdbcTemplateObject.queryForList(SQL,shortName,response,message,date,applicationToken);
         } catch (DataIntegrityViolationException ignored){
 
@@ -114,8 +113,8 @@ public class ApplicationsJDBCTemplate {
         try {
             String SQL =
                     "UPDATE applications " +
-                    "SET dateoflastusedbyapi=? " +
-                    "WHERE applicationToken=?;";
+                            "SET dateoflastusedbyapi=? " +
+                            "WHERE applicationToken=?;";
             jdbcTemplateObject.update(SQL,date,applicationToken);
         } catch (DataIntegrityViolationException ignored){
 

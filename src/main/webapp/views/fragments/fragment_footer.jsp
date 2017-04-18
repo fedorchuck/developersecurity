@@ -21,7 +21,7 @@
 
 <div id="footer" class="footer">
     <div class="container" style="margin-left: 5%;">
-        <h6>Copyright © 2016 <a href="http://vl-fedorchuck.rhcloud.com/" target="_blank">Volodymyr Fedorchuk</a></h6>
+        <h6>Copyright © 2016, 2017 <a href="http://vl-fedorchuck.rhcloud.com/" target="_blank">Volodymyr Fedorchuk</a></h6>
         <h6>
             This software is licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache License</a>.
             <a href="https://github.com/fedorchuck/developersecurity" target="_blank">source code</a>

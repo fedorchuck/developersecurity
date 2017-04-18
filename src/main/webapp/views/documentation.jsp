@@ -60,8 +60,8 @@
             <div class="col-md-10" style="margin-top: -2%;">
                 <div id="createKey">
                     <a href="<c:url value="#createKey"/> "><h3><spring:message code="documentation.button.create"/></h3></a>
-                    <img src="../resources/image/record_create_0.png" class="screenshot"/>
-                    <img src="../resources/image/record_create_1.png" class="screenshot"/>
+                    <img src="../resources/images/record_create_0.png" class="screenshot"/>
+                    <img src="../resources/images/record_create_1.png" class="screenshot"/>
                 </div>
                 <div id="schema">
                     <a href="<c:url value="#schema"/> "><h3><spring:message code="documentation.button.schema"/></h3></a>
@@ -84,7 +84,7 @@
                 </div>
                 <div id="embedding">
                     <a href="<c:url value="#embedding"/> "><h3><spring:message code="documentation.button.embedding"/></h3></a>
-                    <img src="../resources/image/record_view.png" class="screenshot"/>
+                    <img src="../resources/images/record_view.png" class="screenshot"/>
 
                     <pre>
                         <code>
@@ -191,18 +191,18 @@ if (reply.getResponse().equals("DENIED"))
                 </div>
                 <div id="changingAccess">
                     <a href="<c:url value="#changingAccess"/> "><h3><spring:message code="documentation.button.changing_access"/></h3></a>
-                    <img src="../resources/image/record_update_0.png" class="screenshot"/>
-                    <img src="../resources/image/record_update_1.png" class="screenshot"/>
+                    <img src="../resources/images/record_update_0.png" class="screenshot"/>
+                    <img src="../resources/images/record_update_1.png" class="screenshot"/>
                 </div>
                 <div id="removeKey">
                     <a href="<c:url value="#removeKey"/> "><h3><spring:message code="documentation.button.remove"/></h3></a>
                     <spring:message code="documentation.content.remove.1"/>
-                    <img src="../resources/image/record_remove.png" class="screenshot"/>
+                    <img src="../resources/images/record_remove.png" class="screenshot"/>
                     <spring:message code="documentation.content.remove.2"/>
                 </div>
                 <div id="profileSettings">
                     <a href="<c:url value="#profileSettings"/> "><h3><spring:message code="documentation.button.profile_settings"/></h3></a>
-                    <img src="../resources/image/profile_settings.png" class="screenshot"/>
+                    <img src="../resources/images/profile_settings.png" class="screenshot"/>
                 </div>
             </div>
         </div>

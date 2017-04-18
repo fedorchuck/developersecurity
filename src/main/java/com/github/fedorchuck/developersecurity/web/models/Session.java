@@ -17,6 +17,10 @@
 package com.github.fedorchuck.developersecurity.web.models;
 
 import com.github.fedorchuck.developersecurity.domainmodels.Developer;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -27,6 +31,8 @@ import java.util.Objects;
  */
 @Component
 @Scope("session")
+@Getter @Setter
+@EqualsAndHashCode @ToString
 public class Session {
     private Developer user;
     private String language;
@@ -36,93 +42,4 @@ public class Session {
     private String message;
     private String tmp;
 
-    public Session() {
-    }
-
-    public Developer getUser() {
-        return user;
-    }
-
-    public void setUser(Developer user) {
-        this.user = user;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public String getDataOfSiteUpdate() {
-        return dataOfSiteUpdate;
-    }
-
-    public void setDataOfSiteUpdate(String dataOfSiteUpdate) {
-        this.dataOfSiteUpdate = dataOfSiteUpdate;
-    }
-
-    public boolean isInfo() {
-        return info;
-    }
-
-    public void setInfo(boolean info) {
-        this.info = info;
-    }
-
-    public String getStrong() {
-        return strong;
-    }
-
-    public void setStrong(String strong) {
-        this.strong = strong;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getTmp() {
-        return tmp;
-    }
-
-    public void setTmp(String tmp) {
-        this.tmp = tmp;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Session session = (Session) o;
-        return info == session.info &&
-                Objects.equals(user, session.user) &&
-                Objects.equals(language, session.language) &&
-                Objects.equals(dataOfSiteUpdate, session.dataOfSiteUpdate) &&
-                Objects.equals(strong, session.strong) &&
-                Objects.equals(message, session.message);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(user, language, dataOfSiteUpdate, info, strong, message);
-    }
-
-    @Override
-    public String toString() {
-        return "Session{" +
-                "user=" + user +
-                ", language='" + language + '\'' +
-                ", dataOfSiteUpdate='" + dataOfSiteUpdate + '\'' +
-                ", info=" + info +
-                ", strong='" + strong + '\'' +
-                ", message='" + message + '\'' +
-                ", tmp='" + tmp + '\'' +
-                '}';
-    }
 }

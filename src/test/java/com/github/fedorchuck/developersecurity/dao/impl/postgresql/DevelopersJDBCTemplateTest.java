@@ -122,13 +122,13 @@ public class DevelopersJDBCTemplateTest {
     public void test008(){
         Developer expected = new Developer(
                 "00000000-0000-0000-0000-000000000001","skype.v.v@gmail.com",
-                "qwerty","Volodymyr",true,"ROLE_USER", 0L, 0L);
+                "qwerty","Volodymyr",true,"ROLE_USER", 0L, 1L);
         developersJDBCTemplate.setEmail("00000000-0000-0000-0000-000000000001","skype.v.v@gmail.com");
         Developer actual = developersJDBCTemplate.getDeveloper("skype.v.v@gmail.com", developerEmail);
         Assert.assertEquals(expected,actual);
         expected = new Developer(
                 "00000000-0000-0000-0000-000000000001","randomholy@gmail.com",
-                "qwerty","Volodymyr",true,"ROLE_USER", 0L, 0L);
+                "qwerty","Volodymyr",true,"ROLE_USER", 0L, 1L);
         developersJDBCTemplate.setEmail("00000000-0000-0000-0000-000000000001","randomholy@gmail.com");
         actual = developersJDBCTemplate.getDeveloper("randomholy@gmail.com", developerEmail);
         Assert.assertEquals(expected,actual);

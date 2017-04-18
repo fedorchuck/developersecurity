@@ -16,68 +16,17 @@
 
 package com.github.fedorchuck.developersecurity.domainmodels;
 
-import java.util.Objects;
+import lombok.*;
 
-@SuppressWarnings("ALL")
+/**
+ * @author fedorchuck.
+ */
+@Getter
+@Setter
+@AllArgsConstructor @NoArgsConstructor
+@EqualsAndHashCode @ToString
 public class Response {
-	private String response;
+    private String response;
     private String message;
     private String documentationUrl;
-
-    public Response(String response, String message, String documentationUrl) {
-        this.response = response;
-        this.message = message;
-        this.documentationUrl = documentationUrl;
-    }
-
-    public Response() {
-    }
-
-    public String getResponse() {
-        return response;
-    }
-
-    public void setResponse(String response) {
-        this.response = response;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getDocumentationUrl() {
-        return documentationUrl;
-    }
-
-    public void setDocumentationUrl(String documentationUrl) {
-        this.documentationUrl = documentationUrl;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Response o1 = (Response) o;
-        return Objects.equals(response, o1.response) &&
-                Objects.equals(message, o1.message) &&
-                Objects.equals(documentationUrl, o1.documentationUrl);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(response, message, documentationUrl);
-    }
-
-    @Override
-    public String toString() {
-        return "Response{" +
-                "response='" + response + '\'' +
-                ", message='" + message + '\'' +
-                ", documentationUrl='" + documentationUrl + '\'' +
-                '}';
-    }
 }

@@ -38,9 +38,9 @@ public class RestApiServiceImplTest {
     @Test
     public void test001() {
         RestApiServiceImpl clientServiceImplTest = new RestApiServiceImpl(applicationsJDBCTemplate);
-        Response expected = new Response("DENIED","user message - answer for question why","link to website");
+        Response expected = new Response("DENIED","some message","link to website");
         Assert.assertEquals(
-                expected,clientServiceImplTest.getResponse("00000000-0000-0000-0000-000000000000","11111111-1111-1111-1111-111111111111"));
+                expected,clientServiceImplTest.getResponse("00000000-0000-0000-0000-000000000001","11111111-1111-1111-1111-111111111111"));
     }
 
     @Test
@@ -48,13 +48,13 @@ public class RestApiServiceImplTest {
         RestApiServiceImpl clientServiceImplTest = new RestApiServiceImpl(applicationsJDBCTemplate);
         Response expected = new Response("PERMITTED","user message - answer for question why","link to website");
         Assert.assertEquals(
-                expected,clientServiceImplTest.getResponse("00000000-0000-0000-0000-000000000000","22222222-2222-2222-2222-222222222222"));
+                expected,clientServiceImplTest.getResponse("00000000-0000-0000-0000-000000000001","22222222-2222-2222-2222-222222222222"));
     }
 
     @Test
     public void test003() {
         RestApiServiceImpl clientServiceImplTest = new RestApiServiceImpl(applicationsJDBCTemplate);
-        Response expected = new Response("PERMITTED","Record with this signature was not found.","link to website");
+        Response expected = new Response("PERMITTED","Record with this signature was not found.","https://developersecurity.herokuapp.com/documentation");
         Assert.assertEquals(
                 expected,clientServiceImplTest.getResponse("00000000-0000-0000-0000-222222222222","22222222-2222-2222-2222-000000000000"));
     }

@@ -16,34 +16,23 @@
 
 package com.github.fedorchuck.developersecurity.web.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Arrays;
 
 /**
  * @link 'https://developers.google.com/recaptcha/docs/verify#api-request'
  * @link 'https://www.google.com/recaptcha/admin#site/320945753?setup'
  * */
+@Getter
+@Setter
 public class ReCaptcha {
 
     private Boolean success;        //": true|false,
     private String challenge_ts;    //": timestamp, // timestamp of the challenge load (ISO format yyyy-MM-dd'T'HH:mm:ssZZ)
     private String hostname;        //": string,    // the hostname of the site where the reCAPTCHA was solved
     private String[] error_codes;   //": [...]      // optional
-
-    public Boolean getSuccess() {
-        return success;
-    }
-
-    public String getChallenge_ts() {
-        return challenge_ts;
-    }
-
-    public String getHostname() {
-        return hostname;
-    }
-
-    public String[] getError_codes() {
-        return error_codes;
-    }
 
     @Override
     public String toString() {

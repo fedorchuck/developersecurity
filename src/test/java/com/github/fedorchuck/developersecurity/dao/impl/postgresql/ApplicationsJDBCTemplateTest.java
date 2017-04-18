@@ -23,9 +23,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -47,22 +45,24 @@ public class ApplicationsJDBCTemplateTest {
         Application application = new Application(
                 0L,"00000000-0000-0000-0000-000000000001",
                 "11111111-1111-1111-1111-111111111111", "first test app",
-                "DENIED","user message - answer for question why","link to website",
+                "PERMITTED","user message - answer for question why","link to website",
                 0L,0L);
         applicationsJDBCTemplate.save(application);
         application = new Application(
                 1L,"00000000-0000-0000-0000-000000000001",
                 "22222222-2222-2222-2222-222222222222", "first test app",
-                "PERMITTED","user message - answer for question why","link to website",0L,0L);
+                "PERMITTED","user message - answer for question why","link to website",
+                0L,0L);
         applicationsJDBCTemplate.save(application);
     }
 
     @Test       //getApplications
     public void test001(){
-//        Assert.assertEquals(false, developersJDBCTemplate.tokenExist(UUID.randomUUID().toString()));
-        List<String> expected = Arrays.asList("11111111-1111-1111-1111-111111111111","22222222-2222-2222-2222-222222222222");
+//        Assert.assertEquals(true, applicationsJDBCTemplate.tokenExist("11111111-1111-1111-1111-111111111111"));
+
+        Set<String> expected = new HashSet<>(Arrays.asList("11111111-1111-1111-1111-111111111111","22222222-2222-2222-2222-222222222222"));
         List<Application> tmp = applicationsJDBCTemplate.getApplications("00000000-0000-0000-0000-000000000001");
-        List<String> actual = tmp.stream().map(Application::getApplicationToken).collect(Collectors.toList());
+        Set<String> actual = new HashSet<>(tmp.stream().map(Application::getApplicationToken).collect(Collectors.toList()));
 
         Assert.assertEquals(expected, actual);
     }
@@ -75,7 +75,7 @@ public class ApplicationsJDBCTemplateTest {
     @Test       //updateEnabled
     public void test003(){
         applicationsJDBCTemplate.updateApplication(
-                "tested method updateApi","PERMITTED","some message",
+                "tested method updateApi","DENIED","some message",
                 new TimeUtil().convertDateToUnix(new Date()),"11111111-1111-1111-1111-111111111111");
     }
 

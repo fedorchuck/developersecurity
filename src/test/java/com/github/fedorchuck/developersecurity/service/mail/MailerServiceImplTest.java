@@ -42,7 +42,7 @@ public class MailerServiceImplTest {
         //Get the mailer instance
         MailerServiceImpl mailer = (MailerServiceImpl) context.getBean("mailService");
 
-        String to = "randomholy@gmail.com";//"skype.v.v@gmail.com";
+        String to = "randomholy@gmail.com";
         String subject = "no reply";
 
         String body = "Just test. Method *sendMail*";

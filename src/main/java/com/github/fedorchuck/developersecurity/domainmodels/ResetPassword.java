@@ -16,13 +16,18 @@
 
 package com.github.fedorchuck.developersecurity.domainmodels;
 
-import java.util.Objects;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  * @author fedorchuck.
  */
+@Getter
+@Setter
+@EqualsAndHashCode @ToString
 public class ResetPassword {
-    private Long id;
     private String token;
     private String email;
 
@@ -31,41 +36,4 @@ public class ResetPassword {
         this.email = email;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ResetPassword that = (ResetPassword) o;
-        return Objects.equals(token, that.token) &&
-                Objects.equals(email, that.email);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(token, email);
-    }
-
-    @Override
-    public String toString() {
-        return "ResetPassword{" +
-                "token='" + token + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }

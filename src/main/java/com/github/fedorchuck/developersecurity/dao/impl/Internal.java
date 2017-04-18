@@ -29,8 +29,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class Internal {
     private Logger log = Logger.getLogger(Internal.class);
 
-    private String dataOfSiteUpdate;//day month 3 22:39:31 2016
-    private String reCapture_secret;//"6LfW-icTAAAAAJv4LMTXveVRgsYePX9TXCUAKOBx"
+    private String dataOfSiteUpdate;
+    private String reCapture_secret;
     private String whereSendFeedback;
 
     public void setDataOfSiteUpdate(String dataOfSiteUpdate) {
